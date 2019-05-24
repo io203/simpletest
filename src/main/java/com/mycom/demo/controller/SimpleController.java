@@ -32,8 +32,8 @@ public class SimpleController {
 	
 	@GetMapping("/version")
 	public String version(){
-		System.out.println("======= version: v4.6");
-		return "version 4.6";
+		System.out.println("======= version: v4.7");
+		return "version 4.7";
 		
 	}
 	

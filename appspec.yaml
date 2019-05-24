@@ -1,0 +1,9 @@
+version: 1
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: TEMP_TASK_DEFINITION_ARN
+        LoadBalancerInfo:
+          ContainerName: TEMP_CONTAINER_NAME
+          ContainerPort: TEMP_CONTAINER_PORT

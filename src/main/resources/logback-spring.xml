@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true"> <!-- default 1 minutes -->
+	 
+	 <property name="projectName" value="simpletest" />
+	
+	<appender name="jsonConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <pattern>
+                    <pattern>                    
+                        {
+                        "date":"%date",
+                        "level": "%level",
+                        "project": "${projectName}",
+                        "pid": "${PID:-}",
+                        "thread": "%thread",
+                        "class": "%logger{36}",
+                        "message": "%message"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+	
+	
+
+ 
+	
+	
+	
+	<root level="INFO">
+		<appender-ref ref="jsonConsoleAppender" />
+		
+	</root>
+
+</configuration>

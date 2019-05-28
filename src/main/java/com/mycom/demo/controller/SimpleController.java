@@ -8,9 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mycom.demo.model.Board;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 
 @RestController
+@Slf4j
 public class SimpleController {
 	
 	@GetMapping("/")
@@ -26,13 +29,14 @@ public class SimpleController {
 			list.add(new Board(i+1,"test-"+i, "contents-"+i));
 			System.out.println("for "+i);
 		}
+		log.info(list.toString());
 		return list;
 		
 	}
 	
 	@GetMapping("/version")
 	public String version(){
-		
+		log.info("version 5.3");
 		return "version 5.3";
 		
 	}

@@ -36,8 +36,8 @@ public class SimpleController {
 	
 	@GetMapping("/version")
 	public String version(){
-		log.info("version 5.3");
-		return "version 5.3";
+		log.info("version 6.0");
+		return "version 6.0";
 		
 	}
 	

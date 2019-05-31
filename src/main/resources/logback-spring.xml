@@ -7,7 +7,7 @@
             <onMatch>ACCEPT</onMatch>
             <onMismatch>DENY</onMismatch>
         </filter>
-        <destination>ip-10-119-36-73.ap-northeast-2.compute.internal:5001</destination>
+        <destination>10.119.36.73:5001</destination>
 
         <!-- encoder is required -->
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">

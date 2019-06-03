@@ -4,6 +4,8 @@
 
 	<property name="projectName" value="simpletest" />
 	<property name="logType" value="waslog" />
+	<!-- application.properties  :  logstash.destination -->
+	<springProperty name="destination" source="logstash.destination" defaultValue="http://1.1.1.1"/>
 	
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
 		<layout class="ch.qos.logback.classic.PatternLayout">
@@ -27,40 +29,9 @@
 	</appender>
 	
 
-	<appender name="logstash"
-		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-		<filter class="ch.qos.logback.classic.filter.LevelFilter">
-			<level>INFO</level>
-			<onMatch>ACCEPT</onMatch>
-			<onMismatch>DENY</onMismatch>
-		</filter>
-		<destination>10.119.36.73:5001</destination>
-
-		<!-- encoder is required -->
-		<encoder
-			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
-			<providers>
-				<pattern>
-					<pattern>
-						{
-						"date":"%date",
-						"level": "%level",
-						"logType": "${logType}",
-						"project": "${projectName}",
-						"pid": "${PID:-}",
-						"thread": "%thread",
-						"class": "%logger{36}",
-						"message": "%message"
-						}
-					</pattern>
-				</pattern>
-			</providers>
-		</encoder>
-
-	</appender>
 	<logger name="com" level="INFO" additivity="false">
 		<appender-ref ref="stdout" />
-		<appender-ref ref="logstash" />
+		
 		 
 		
 	</logger>
@@ -68,7 +39,7 @@
 
 	<root level="INFO">
 		<appender-ref ref="stdout" />
-		<appender-ref ref="logstash" />
+		
 
 	</root>
 

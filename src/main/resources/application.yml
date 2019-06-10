@@ -4,4 +4,4 @@ server:
  
 logstash:
 # destination: docker.for.mac.localhost
- destination: 10.10.11.41
+ destination: 10.119.36.220

@@ -2,6 +2,8 @@
 server:
  port: 8088
  
-logstash:
+
 # destination: docker.for.mac.localhost
+
+logstash:
  destination: 10.119.36.220

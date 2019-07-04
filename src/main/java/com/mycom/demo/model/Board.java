@@ -11,6 +11,10 @@ public class Board {
 	private String title;
 	private String contents;
 	
+	public Board() {
+		
+	}
+	
 	
 
 }

@@ -10,10 +10,10 @@ spec:
   type: NodePort
   ports:
   - protocol: TCP
-    port: 80
+    port: 8088
     targetPort: 8088
-#    nodePort: 30001
-  type: LoadBalancer
+    nodePort: 30001
+#  type: LoadBalancer
     
   
 
@@ -34,8 +34,8 @@ spec:
     spec:
       containers:
         - name: simpletest
-          image: asia.gcr.io/my-gcp101/simpletest
-          imagePullPolicy: Always
+          image: simpletest
+          imagePullPolicy: Never
           ports:
             - name: http
               containerPort: 8088

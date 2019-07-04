@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mycom.demo.model.Board;
@@ -36,8 +37,18 @@ public class SimpleController {
 	
 	@GetMapping("/version")
 	public String version(){
-		log.info("version 7.6");
-		return "version 7.6";
+		log.info("version 7.14");
+		return "version 7.14";
+		
+	}
+	
+	@PostMapping("/update")
+	public Board update(Board param) {
+		Board board = new Board();
+		board.setNum(param.getNum());
+		board.setTitle(param.getTitle());
+		board.setContents(param.getContents());
+		return board;
 		
 	}
 	

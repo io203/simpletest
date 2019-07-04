@@ -1,16 +1,35 @@
 apiVersion: skaffold/v1beta11
 kind: Config
 # Enforce SKaffold to use Jib
-build:
+build: 
+# Generated artifact
   local:
     push: false
-# Generated artifact
   artifacts:
-    - image: simpletest
+    - image: asia.gcr.io/my-gcp101/simpletest
+     
 # Use jibMaven
-      jibMaven: {}
+      jibMaven: 
+       args:
+       - -DskipTests
+       
+
 # Execute deployment.yml
 deploy:
   kubectl:
     manifests:
-      - k8s/simpletest.yml
+      - k8s/simpletest.yaml
+
+profiles:
+  - name: local
+    build:
+      artifacts:
+       - image: simpletest
+         jibMaven: 
+           args:
+           - -DskipTests
+    deploy:    
+      kubectl:
+       manifests:
+         - k8s/minikube/*.yaml
+  

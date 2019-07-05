@@ -3,8 +3,9 @@ kind: Config
 # Enforce SKaffold to use Jib
 build: 
 # Generated artifact
-  local:
-    push: false
+  tagPolicy:
+    envTemplate:
+      template: "{{.IMAGE_NAME}}:{{.VER}}"
   artifacts:
     - image: asia.gcr.io/my-gcp101/simpletest
      
@@ -23,6 +24,8 @@ deploy:
 profiles:
   - name: local
     build:
+      local:
+         push: false
       artifacts:
        - image: simpletest
          jibMaven: 

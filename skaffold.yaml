@@ -35,4 +35,5 @@ profiles:
       kubectl:
        manifests:
          - k8s/minikube/*.yaml
+    
   
